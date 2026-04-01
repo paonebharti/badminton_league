@@ -1,0 +1,6 @@
+<h1>Players#show</h1>
+<h1><%= @player.name %></h1>
+
+<%= link_to "Back", players_path %>
+<%= link_to "Edit", edit_player_path(@player) %>
+<%= button_to "Delete", @player, method: :delete, data: { turbo_confirm: "Are you sure?" } %>

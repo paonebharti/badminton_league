@@ -1,0 +1,13 @@
+<h1>Players#index</h1>
+
+<%= link_to "Add Player", new_player_path %>
+
+<div id="players">
+  <% @players.each do |player| %>
+    <div>
+      <%= link_to player.name, player_path(player.id) %>
+    </div>
+  <% end %>
+</div>
+
+<%== pagy_nav(@pagy) %>
