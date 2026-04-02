@@ -3,7 +3,10 @@ class PlayersController < ApplicationController
   before_action :set_player, only: %i[show edit update destroy]
 
   def index
-    @pagy, @players = pagy(Player.active, items: 10)
+    players_data = Player.find_by_sql("SELECT p.id, p.name, p.age, p.email, p.phone, COUNT(DISTINCT wins.id) as win_count, COUNT(DISTINCT losses.id) as loss_count 
+                          FROM players as p LEFT JOIN matches as wins on p.id = wins.winner_id LEFT JOIN matches as losses on p.id = losses.loser_id WHERE p.active = true 
+                          GROUP BY p.id ORDER BY win_count DESC, loss_count ASC;")
+    @pagy, @players = pagy_array(players_data, items: 10)
   end
 
   def new
