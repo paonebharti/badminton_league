@@ -23,6 +23,15 @@
   </head>
 
   <body>
+    <nav>
+      <% unless controller_name == 'players' && action_name == 'index' %>
+        <%= link_to 'Leaderboard', players_path %>
+      <% end %>
+      <% unless controller_name == 'matches' && action_name == 'index' %>
+        <%= link_to 'Matches History', matches_path %>
+      <% end %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

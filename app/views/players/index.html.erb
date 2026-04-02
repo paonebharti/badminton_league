@@ -1,13 +1,42 @@
-<h1>Players#index</h1>
+<%= link_to 'Add Player', new_player_path %>
+<%= link_to 'Record Match', new_match_path %>
 
-<%= link_to "Add Player", new_player_path %>
+<br><br>
 
-<div id="players">
-  <% @players.each do |player| %>
-    <div>
-      <%= link_to player.name, player_path(player.id) %>
-    </div>
-  <% end %>
-</div>
-
-<%== pagy_nav(@pagy) %>
+<% if @players.empty? %>
+    <p>No players yet. Add one above!</p>
+<% else %>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @players.each_with_index do |player, index| %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= link_to player.name, player_path(player) %></td>
+                    <td><%= player.age %></td>
+                    <td><%= player.email %></td>
+                    <td><%= player.phone %></td>
+                    <td><%= player.win_count %></td>
+                    <td><%= player.loss_count %></td>
+                    <td>
+                        <%= link_to 'Edit', edit_player_path(player) %>
+                        <%= button_to 'Remove', player_path(player), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+    <%== pagy_nav(@pagy) %>
+<% end %>

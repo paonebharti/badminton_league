@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
   before_action :set_player, only: %i[show edit update destroy]
 
   def index
-    @pagy, @players = pagy(Player.active, items: 20)
+    @pagy, @players = pagy(Player.active, items: 10)
   end
 
   def new
@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
 
   def create
     @player = Player.new(player_params)
-    # debugger
+
     if @player.save
       redirect_to players_path, notice: 'Player added successfully!'
     else
