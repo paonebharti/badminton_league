@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :fetch_players, only: %i[new edit]
+  before_action :fetch_players, only: %i[new create edit]
   before_action :set_match, only: %i[edit update destroy]
 
   def index

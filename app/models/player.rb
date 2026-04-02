@@ -12,12 +12,4 @@ class Player < ApplicationRecord
     def soft_delete
         update(active: false)
     end
-
-    def win_count
-        wins.count
-    end
-
-    def loss_count
-        losses.count
-    end
 end
