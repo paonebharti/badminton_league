@@ -1,0 +1,31 @@
+<h1>Edit Match</h1>
+
+<div>
+    <%= form_with model: @match do |f| %>
+        <% if @match.errors.any? %>
+            <div>
+                <% @match.errors.full_messages.each do |msg| %>
+                    <p><%= msg %></p>
+                <% end %>
+            </div>
+        <% end %>
+
+        <div>
+            <%= f.label :winner_id, 'Winner' %>
+            <%= f.select :winner_id, @players.map { |p| [p.name, p.id] }, { include_blank: 'Select winner' } %>
+        </div>
+
+        <div>
+            <%= f.label :loser_id, 'Loser' %>
+            <%= f.select :loser_id, @players.map { |p| [p.name, p.id] }, { include_blank: 'Select loser' } %>
+        </div>
+
+        <div>
+            <%= f.label :played_at, 'Played At' %>
+            <%= f.datetime_local_field :played_at, value: @match.played_at.strftime('%Y-%m-%dT%H:%M') %>
+        </div>
+
+        <%= f.submit 'Update Match' %>
+        <%= link_to 'Cancel', players_path %>
+    <% end %>
+</div>

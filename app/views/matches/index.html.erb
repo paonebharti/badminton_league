@@ -1,0 +1,33 @@
+<%= link_to 'Record Match', new_match_path %>
+
+<br><br>
+
+<% if @matches.empty? %>
+    <p>No matches recorded yet.</p>
+<% else %>
+    <table>
+        <thead>
+            <tr>
+                <th>Winner</th>
+                <th>Loser</th>
+                <th>Played At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @matches.each do |match| %>
+                <tr>
+                    <td><%= match.winner.name %></td>
+                    <td><%= match.loser.name %></td>
+                    <td><%= match.played_at.strftime('%d %b %Y, %I:%M %p') %></td>
+                    <td>
+                        <%= link_to 'Edit', edit_match_path(match) %>
+                        <%= button_to 'Delete', match_path(match), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+    <%== pagy_nav(@pagy) %>
+<% end %>
