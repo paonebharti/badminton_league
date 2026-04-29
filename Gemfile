@@ -56,4 +56,4 @@ group :development do
 end
 
 # Pagination
-gem 'pagy', '~> 5.10', '>= 5.10.1'
+gem 'pagy', '~> 43.5'

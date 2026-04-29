@@ -80,7 +80,7 @@ GEM
     bcrypt_pbkdf (1.1.2)
     bcrypt_pbkdf (1.1.2-arm64-darwin)
     bcrypt_pbkdf (1.1.2-x86_64-darwin)
-    bigdecimal (4.1.0)
+    bigdecimal (4.1.2)
     bindex (0.8.1)
     bootsnap (1.23.0)
       msgpack (~> 1.2)
@@ -134,7 +134,7 @@ GEM
     jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
-    json (2.19.3)
+    json (2.19.4)
     kamal (2.11.0)
       activesupport (>= 7.0)
       base64 (~> 0.2)
@@ -162,7 +162,7 @@ GEM
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
-    minitest (6.0.3)
+    minitest (6.0.5)
       drb (~> 2.0)
       prism (~> 1.5)
     msgpack (1.8.0)
@@ -198,8 +198,10 @@ GEM
     nokogiri (1.19.2-x86_64-linux-musl)
       racc (~> 1.4)
     ostruct (0.6.3)
-    pagy (5.10.1)
-      activesupport
+    pagy (43.5.3)
+      json
+      uri
+      yaml
     parallel (1.27.0)
     parser (3.3.11.1)
       ast (~> 2.4.1)
@@ -353,6 +355,7 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    yaml (0.4.0)
     zeitwerk (2.7.5)
 
 PLATFORMS
@@ -376,7 +379,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   jbuilder
   kamal
-  pagy (~> 5.10, >= 5.10.1)
+  pagy (~> 43.5)
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)
